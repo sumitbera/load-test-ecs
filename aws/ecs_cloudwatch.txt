@@ -1,0 +1,18 @@
+--AVERAGE LATENCY PER SECOND--
+
+fields @latency
+| filter (@message like 'lb="HTTP Request"')
+| parse @message 't="*" ' as @latency
+| stats avg(@latency) as @averageLatency by bin(1s)
+
+--ERROR PER CONTAINER--
+fields @logStream, @errorPercentage
+| filter (@message like 'o.a.j.r.Summariser: summary') AND (@message like /10000/)
+| parse @message 'Err: * (*%)' as @errorCount, @errorPercentage
+| sort @logStream
+
+--ERROR TYPE DISTRIBUTION--
+fields @error, @errorCount
+| filter (@message like 's="false"')
+| parse @message 'rm="*" ' as @error
+| stats count(@error) as @errorCount by @error
