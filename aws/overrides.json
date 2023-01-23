@@ -1,0 +1,25 @@
+{
+    "containerOverrides": [
+        {
+            "name": "userServiceTest",
+            "environment": [
+                {
+                    "name": "NUMBER_OF_THREADS",
+                    "value": "100"
+                },
+                {
+                    "name": "RAMP_UP_PERIOD",
+                    "value": "1"
+                },
+                {
+                    "name": "HOST_URL",
+                    "value": "api-alpha.trevo.my"
+                },
+                {
+                    "name": "PORT",
+                    "value": "443"
+                }
+            ]
+        }
+    ]
+}
