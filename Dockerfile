@@ -9,13 +9,13 @@ RUN apk update && \
 # Set variables
 ENV JMETER_HOME=/usr/share/apache-jmeter \
     JMETER_VERSION=5.5 \
-    TEST_SCRIPT_FILE=/var/jmeter/UserServices.jmx \
+    TEST_SCRIPT_FILE=/var/jmeter/script.jmx \
     TEST_LOG_FILE=/var/jmeter/UserServices.log \
     TEST_RESULTS_FILE=/var/jmeter/test-result.xml \
     PATH="~/.local/bin:$PATH" \
     NUMBER_OF_THREADS=100 \
     RAMP_UP_PERIOD=1 \
-    HOST_URL='api-alpha.trevo.my' \
+    HOST_URL='gorest.co.in' \
     PORT=443
     
 # Install Apache JMeter
