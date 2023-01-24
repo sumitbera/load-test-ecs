@@ -1,11 +1,11 @@
 {
     "containerOverrides": [
         {
-            "name": "userServiceTest",
+            "name": "userServiceLoadTest",
             "environment": [
                 {
                     "name": "NUMBER_OF_THREADS",
-                    "value": "100"
+                    "value": "3"
                 },
                 {
                     "name": "RAMP_UP_PERIOD",
@@ -13,7 +13,7 @@
                 },
                 {
                     "name": "HOST_URL",
-                    "value": "api-alpha.trevo.my"
+                    "value": "gorest.co.in"
                 },
                 {
                     "name": "PORT",
