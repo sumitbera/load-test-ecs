@@ -162,7 +162,7 @@
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(hostUrl)}</stringProp>
             <stringProp name="HTTPSampler.port">${__P(port)}</stringProp>
-            <stringProp name="HTTPSampler.protocol">protocol</stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">${getPosts}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -214,7 +214,7 @@
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(hostUrl)}</stringProp>
             <stringProp name="HTTPSampler.port">${__P(port)}</stringProp>
-            <stringProp name="HTTPSampler.protocol">protocol</stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">${createUser}</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -265,7 +265,7 @@
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(hostUrl)}</stringProp>
             <stringProp name="HTTPSampler.port">${__P(port)}</stringProp>
-            <stringProp name="HTTPSampler.protocol">protocol</stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">${deleteUser}/${id}</stringProp>
             <stringProp name="HTTPSampler.method">DELETE</stringProp>
