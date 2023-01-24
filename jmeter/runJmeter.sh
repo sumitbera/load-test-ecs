@@ -1,5 +1,5 @@
 jmeter -n \
-    -t ./UserServices.jmx \
+    -t ./script.jmx \
     -j ./UserServices.log \
     -l ./UserServices.xml \
     -Jjmeter.save.saveservice.output_format=xml \
@@ -7,7 +7,7 @@ jmeter -n \
     -Jjmeter.save.saveservice.samplerData=true \
     -JnumberOfThreads=100 \
     -JrampUpPeriod=1 \
-    -Jhost=api-alpha.trevo.my \
+    -Jhost=gorest.co.in \
     -Jport=443 && \
     echo -e "\n\n===== TEST LOGS =====\n\n" && \
     cat UserServices.log && \
