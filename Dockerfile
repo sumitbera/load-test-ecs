@@ -4,7 +4,8 @@ FROM openjdk:8-jre-alpine3.7
 # Install packages
 RUN apk update && \
     apk add ca-certificates wget python python-dev py-pip && \
-    update-ca-certificates
+    update-ca-certificates && \
+    pip install --upgrade --user awscli
     
 # Set variables
 ENV JMETER_HOME=/usr/share/apache-jmeter \
@@ -13,10 +14,11 @@ ENV JMETER_HOME=/usr/share/apache-jmeter \
     TEST_LOG_FILE=/var/jmeter/UserServices.log \
     TEST_RESULTS_FILE=/var/jmeter/test-result.xml \
     PATH="~/.local/bin:$PATH" \
-    NUMBER_OF_THREADS=100 \
+    NUMBER_OF_THREADS=10 \
     RAMP_UP_PERIOD=1 \
     HOST_URL='gorest.co.in' \
-    PORT=443
+    PORT=443 \
+    JVM_ARGS="-Xms2048m -Xmx4096m -XX:NewSize=1024m -XX:MaxNewSize=2048m -Duser.timezone=UTC"
     
 # Install Apache JMeter
 RUN wget http://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz && \
@@ -25,7 +27,10 @@ RUN wget http://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_V
     mv apache-jmeter-${JMETER_VERSION} ${JMETER_HOME}
 
 # Copy test plan
-COPY jmeter/UserServices.jmx ${TEST_SCRIPT_FILE}
+COPY jmeter/script.jmx ${TEST_SCRIPT_FILE}
+
+# Expose port
+EXPOSE 443
 
 # The main command, running jemeter:
 CMD $JMETER_HOME/bin/jmeter -n \
