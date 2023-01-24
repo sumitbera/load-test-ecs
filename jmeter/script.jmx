@@ -439,7 +439,7 @@
               </elementProp>
               <elementProp name="influxdbUrl" elementType="Argument">
                 <stringProp name="Argument.name">influxdbUrl</stringProp>
-                <stringProp name="Argument.value">${influxdbUrl}?db=${jmeterlogs}</stringProp>
+                <stringProp name="Argument.value">${influxdbUrl}?db=${dbName}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="application" elementType="Argument">
