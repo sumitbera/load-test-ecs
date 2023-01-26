@@ -18,6 +18,10 @@
                 {
                     "name": "PORT",
                     "value": "443"
+                },
+                {
+                    "name": "LOOP_COUNT",
+                    "value": "1"
                 }
             ]
         }
