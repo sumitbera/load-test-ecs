@@ -18,6 +18,7 @@ ENV JMETER_HOME=/usr/share/apache-jmeter \
     RAMP_UP_PERIOD=1 \
     HOST_URL='gorest.co.in' \
     PORT=443 \
+    LOOP_COUNT=1 \
     JVM_ARGS="-Xms2048m -Xmx4096m -XX:NewSize=1024m -XX:MaxNewSize=2048m -Duser.timezone=UTC"
     
 # Install Apache JMeter
