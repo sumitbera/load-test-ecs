@@ -134,7 +134,7 @@ influxd -config /etc/influxdb/influxdb.conf
 
 ![Alt text](screenshots/cluster_details.png "ECS Cluster name")  
 
-2. Enter infrastructure details, In our case we are using <b>Amazon EC2 instance<b>  
+2. Enter infrastructure details, In our case we are using <b>Amazon EC2 instance</b>  
 * Min and Max instance can be any value based on your need (in our case we are keeping Min 1 and Max 3).  
 * Operating system/Architecture again depends on your compute choices, we are using <b>Amazon Linux 2</b> here.  
 * EC2 instance type depends on the level of scale at which you want to perform test, for our case we are using <b>t3.medium</b>
@@ -147,3 +147,33 @@ influxd -config /etc/influxdb/influxdb.conf
 4. Click on <b>Create</b> button and within few minutes, your cluster will be up and running.  
 
 ![Alt text](screenshots/cluster.png "ECS Cluster")  
+
+<b><u>Create Task definition in ECS</u></b>
+1. Next step is to create an ECS task definition.  
+* Enter your task definition name.  
+* Enter your ECR <b>repo name</b> and <b>docker image URI</b>.  
+* Add container port <b>443</b>.  
+
+![Alt text](screenshots/taskdef.png "ECS Task definition")  
+
+2. Next is to add the environment variables under the environment variable section. Click on <b>Add environment variable.</b> and add all the Jmeter variables that needs to be passed as variable to the cluster.
+```
+NUMBER_OF_THREADS: 5
+RAMP_UP_PERIOD: 1
+HOST_URL: gorest.co.in
+PORT: 443
+LOOP_COUNT: 1
+```  
+
+![Alt text](screenshots/env.png "ECS Task definition Env variable") 
+
+3. Once you click on Next you will be navigated to the envrionment section of task definition, where you have to select environment details.  
+* Select app environment as <b>Amazon EC2</b>.  
+* Under Container size, select your container from the drop down, rest all values can be set to default or based on your test requirement.  
+* Under Monitoring and Logging, you can pick AWS Cloudwatch as your place to log all the execution logs.  
+
+![Alt text](screenshots/monitoring-task.png "ECS Task Monitoring") 
+
+4. Click on <b>Next</b> button and then click on <b>Create</b> button, Your task should be created in few minutes.  
+
+![Alt text](screenshots/task.png "ECS Task") 
