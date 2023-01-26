@@ -128,3 +128,22 @@ separator = "."
 ``` 
 influxd -config /etc/influxdb/influxdb.conf
 ```  
+
+<b><u>Set up cluster on AWS ECS</u></b>
+1. Enter the name of the cluster as shown below.  
+
+![Alt text](screenshots/cluster_details.png "ECS Cluster name")  
+
+2. Enter infrastructure details, In our case we are using <b>Amazon EC2 instance<b>  
+* Min and Max instance can be any value based on your need (in our case we are keeping Min 1 and Max 3).  
+* Operating system/Architecture again depends on your compute choices, we are using <b>Amazon Linux 2</b> here.  
+* EC2 instance type depends on the level of scale at which you want to perform test, for our case we are using <b>t3.medium</b>
+
+![Alt text](screenshots/infrastructure.png "ECS Infrastructure")  
+3. Monitoring choice is optional, if you turn on <b>container insights</b> you will incure additional charges.  
+
+![Alt text](screenshots/monitoring.png "ECS Cluster Monitoring") 
+
+4. Click on <b>Create</b> button and within few minutes, your cluster will be up and running.  
+
+![Alt text](screenshots/cluster.png "ECS Cluster")  
