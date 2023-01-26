@@ -69,6 +69,11 @@
             <stringProp name="Argument.value">${__P(hostUrl)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="loopCount" elementType="Argument">
+            <stringProp name="Argument.name">loopCount</stringProp>
+            <stringProp name="Argument.value">${__P(loopCount)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="token" elementType="Argument">
             <stringProp name="Argument.name">token</stringProp>
             <stringProp name="Argument.value">a4f1c78a182afd8a35bdbefe59bfd0c0fb63906376f51465dcbb1fb6efc296a9</stringProp>
@@ -84,11 +89,6 @@
             <stringProp name="Argument.value">active</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="emailId" elementType="Argument">
-            <stringProp name="Argument.name">emailId</stringProp>
-            <stringProp name="Argument.value">${__V(Test10${__Random(1,10000,)}@gmail.com)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="userName" elementType="Argument">
             <stringProp name="Argument.name">userName</stringProp>
             <stringProp name="Argument.value">${__RandomString(6,abcdefghijklmnopqrstwxyz)}</stringProp>
@@ -96,12 +96,12 @@
           </elementProp>
           <elementProp name="influxdbUrl" elementType="Argument">
             <stringProp name="Argument.name">influxdbUrl</stringProp>
-            <stringProp name="Argument.value">http://13.229.119.119:8086/write</stringProp>
+            <stringProp name="Argument.value">http://54.179.7.41:8086/write</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="dbName" elementType="Argument">
             <stringProp name="Argument.name">dbName</stringProp>
-            <stringProp name="Argument.value">jmeterlogs</stringProp>
+            <stringProp name="Argument.value">jmeter</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -111,10 +111,10 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <stringProp name="LoopController.loops">${loopCount}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(numberOfThreads)}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${__P(rampUpPeriod)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${numberOfThreads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampUpPeriod}</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -130,8 +130,8 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${__P(hostUrl)}</stringProp>
-            <stringProp name="HTTPSampler.port">${__P(port)}</stringProp>
+            <stringProp name="HTTPSampler.domain">${hostUrl}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">${getUser}</stringProp>
@@ -170,8 +170,8 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${__P(hostUrl)}</stringProp>
-            <stringProp name="HTTPSampler.port">${__P(port)}</stringProp>
+            <stringProp name="HTTPSampler.domain">${hostUrl}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">${getPosts}</stringProp>
@@ -222,8 +222,8 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${__P(hostUrl)}</stringProp>
-            <stringProp name="HTTPSampler.port">${__P(port)}</stringProp>
+            <stringProp name="HTTPSampler.domain">${hostUrl}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">${createUser}</stringProp>
@@ -238,6 +238,18 @@
             <stringProp name="TestPlan.comments">Create a user</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Generate Email Id" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="-1638015529">emailId</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="826628196">
+                  <stringProp name="-1274031077">${__V(Test10${__Random(1,1000,)}@abc.com)}</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
@@ -273,8 +285,8 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${__P(hostUrl)}</stringProp>
-            <stringProp name="HTTPSampler.port">${__P(port)}</stringProp>
+            <stringProp name="HTTPSampler.domain">${hostUrl}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">${deleteUser}/${id}</stringProp>
