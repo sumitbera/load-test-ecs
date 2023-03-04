@@ -81,7 +81,7 @@ name = InfluxDB Repository - RHEL 7
 baseurl = https://repos.influxdata.com/rhel/7/x86_64/stable
 enabled = 1
 gpgcheck = 1
-gpgkey = https://repos.influxdata.com/influxdb.key
+gpgkey = https://repos.influxdata.com/influxdata-archive_compat.key
 EOF
 ```  
 b) Run <b>sudo yum repolist</b> to confirm we've the repository added to our Amazon Linux 2.  
